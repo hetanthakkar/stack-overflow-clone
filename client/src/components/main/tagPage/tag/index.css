@@ -1,0 +1,24 @@
+.tagNode {
+  border: 1px dashed #000000; /* Solid border with color */
+  padding: 20px; /* Increase padding for better spacing */
+  width: 200px; /* Set width */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Center text */
+  background-color: #f8f8f8; /* Light background color */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.tagNode:hover {
+  transform: translateY(-5px); /* Move up on hover */
+}
+
+.tagName {
+  color: cornflowerblue; /* Change text color */
+  font-weight: bold; /* Add bold font weight */
+  margin-bottom: 10px; /* Add space below the tag name */
+}

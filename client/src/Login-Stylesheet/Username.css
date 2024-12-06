@@ -1,0 +1,295 @@
+.glass {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(0, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(71, 71, 71, 0.3);
+  width: 35%;
+}
+
+.glass::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  filter: blur(10px);
+  z-index: -1;
+}
+
+.form {
+  height: 400px;
+  padding-top: 20px;
+}
+.profile_img {
+  border: 4px solid #e2e8f0; /* Change this color to your desired border color */
+  width: 135px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.profile_img:hover {
+  border-color: #cbd5e0; /* Change this color to your desired hover border color */
+}
+
+.textbox {
+  border: 0;
+  padding: 15px;
+  border-radius: 20px;
+  width: 75%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 20px;
+  outline: none;
+}
+
+.btn {
+  border: none;
+  background-color: #6366f1; /* Change this color to your desired button color */
+  color: white;
+  padding: 15px;
+  border-radius: 20px;
+  width: 75%;
+  font-size: 18px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+  background-color: #ff6a6a; /* Change this color to your desired button hover color */
+}
+
+.main_working_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  margin-top: 25px;
+}
+.forgot_password_new_user {
+  display: felx;
+  flex-direction: column;
+}
+
+.heading {
+  margin-top: 50px;
+}
+
+.recover {
+  height: auto;
+}
+
+.gap {
+  margin-top: 20px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.height_register {
+  height: 560px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.reg_width {
+  width: 35%;
+}
+
+.profile-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-heading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.profile-subheading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.profile-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-field span {
+  font-size: 1rem;
+  color: #333;
+}
+
+.profile-field input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: #333;
+}
+
+.edit-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #666;
+}
+
+.edit-button:hover {
+  color: #333;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.profile-submit,
+.profile-register,
+.profile-logout {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.profile-submit {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.profile-register {
+  background-color: #28a745;
+  color: #fff;
+  text-decoration: none;
+}
+
+.profile-logout {
+  background-color: #dc3545;
+  color: #fff;
+  text-decoration: none;
+}
+.user-profile {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 2rem;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.profile-field h2,
+.profile-field h3 {
+  margin: 0;
+}
+
+.profile-field input,
+.profile-field textarea {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: #333;
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.edit-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #666;
+  margin-left: 0.5rem;
+}
+
+.edit-button:hover {
+  color: #333;
+}
+
+.profile-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.profile-section h4 {
+  margin-bottom: 0.5rem;
+}
+
+.profile-section p {
+  margin: 0;
+}
+
+.profile-section a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.profile-section a:hover {
+  text-decoration: underline;
+}

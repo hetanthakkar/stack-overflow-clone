@@ -1,0 +1,15 @@
+.btns {
+    margin-right: 40px;;
+    display: flex;
+    width: 400px;
+    justify-content: space-between;
+}
+
+.question_list:last-child {
+    border-bottom: #000000 1px dashed;
+}
+
+.question_count{
+    display: flex;
+    color: red;
+}

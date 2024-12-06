@@ -1,0 +1,169 @@
+.user-profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 3rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 5%;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.profile-picture img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 2rem;
+}
+
+.profile-info h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.profile-info p {
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.profile-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2rem;
+  width: 100%;
+}
+
+.detail-section {
+  background-color: #fff;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.detail-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.detail-section p,
+.detail-section a {
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.detail-section a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.detail-section a:hover {
+  text-decoration: underline;
+}
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
+
+.user-profile {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 2rem;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.profile-field h2,
+.profile-field h3 {
+  margin: 0;
+}
+
+.profile-field input,
+.profile-field textarea {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: #333;
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.edit-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #666;
+  margin-left: 0.5rem;
+}
+
+.edit-button:hover {
+  color: #333;
+}
+
+.profile-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.profile-section h4 {
+  margin-bottom: 0.5rem;
+}
+
+.profile-section p {
+  margin: 0;
+}
+
+.profile-section a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.profile-section a:hover {
+  text-decoration: underline;
+}

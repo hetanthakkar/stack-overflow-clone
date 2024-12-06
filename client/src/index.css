@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Add CSS */
+
+/* Add global CSS here */
+/* Add CSS stylesheet */
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  height: 99%;
+}
+
+body,
+#root {
+  height: 100%;
+}
+@import url("https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap");
+
+* {
+  font-family: "Signika", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Set your desired default weight, e.g., 400 for regular */
+  font-style: normal;
+  font-variation-settings: "GRAD" 0;
+}
+
+* > * {
+  font-family: inherit; /* Inherit the font-family for all children elements */
+  font-weight: inherit; /* Inherit the font-weight for all children elements */
+}
+
+body {
+  background: #dcdce6;
+  background-image: url("./public/Background.png");
+}
