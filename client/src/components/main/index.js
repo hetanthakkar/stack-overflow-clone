@@ -10,6 +10,76 @@ import UserProfile from "./profilePage";
 import ActivityDashboard from "./activityDashboard";
 import { useNavigate } from "react-router-dom";
 
+// Page Factory Class
+class PageFactory {
+  static createPage(type, props) {
+    switch (type) {
+      case "home":
+        return {
+          getContent: (props) => (
+            <QuestionPage
+              title_text={props.title_text}
+              order={props.order}
+              search={props.search}
+              setQuestionOrder={props.setQuestionOrder}
+              clickTag={props.clickTag}
+              handleAnswer={props.handleAnswer}
+              handleNewQuestion={props.handleNewQuestion}
+            />
+          ),
+          getSelected: () => "q",
+        };
+      case "tag":
+        return {
+          getContent: (props) => (
+            <TagPage
+              clickTag={props.clickTag}
+              handleNewQuestion={props.handleNewQuestion}
+            />
+          ),
+          getSelected: () => "t",
+        };
+      case "profile":
+        return {
+          getContent: () => <UserProfile />,
+          getSelected: () => "p",
+        };
+      case "answer":
+        return {
+          getContent: (props) => (
+            <AnswerPage
+              qid={props.qid}
+              handleNewQuestion={props.handleNewQuestion}
+              handleNewAnswer={props.handleNewAnswer}
+            />
+          ),
+          getSelected: () => "q",
+        };
+      case "newQuestion":
+        return {
+          getContent: (props) => (
+            <NewQuestion handleQuestions={props.handleQuestions} />
+          ),
+          getSelected: () => "q",
+        };
+      case "newAnswer":
+        return {
+          getContent: (props) => (
+            <NewAnswer qid={props.qid} handleAnswer={props.handleAnswer} />
+          ),
+          getSelected: () => "q",
+        };
+      case "activityDashboard":
+        return {
+          getContent: () => <ActivityDashboard />,
+          getSelected: () => "a",
+        };
+      default:
+        throw new Error(`Invalid page type: ${type}`);
+    }
+  }
+}
+
 const Main = ({
   search = "",
   title,
@@ -22,45 +92,48 @@ const Main = ({
 }) => {
   const [page, setPage] = useState("home");
   const [questionOrder, setQuestionOrder] = useState("newest");
+  const [currentPage, setCurrentPage] = useState(null);
   const navigate = useNavigate();
+
   useEffect(() => {
+    let newPage = "home";
     if (qid) {
-      setPage("answer");
+      newPage = "answer";
     } else if (profile) {
-      setPage("profile");
+      newPage = "profile";
     } else if (currentPath === "/tags") {
-      setPage("tag");
+      newPage = "tag";
     } else if (currentPath === "/activity") {
-      setPage("activityDashboard");
-    } else {
-      setPage("home");
+      newPage = "activityDashboard";
     }
+
+    setPage(newPage);
+    setCurrentPage(PageFactory.createPage(newPage, {}));
   }, [profile, qid, currentPath]);
 
   const navigateToPage = (newPage, resetProfile = true) => {
     if (resetProfile) setProfile(false);
     switch (newPage) {
       case "home":
-        console.log("AYA AVYO");
         setQuesitonPage("", "All Questions");
         break;
       case "tag":
-        // Navigate to tags page without setting a specific tag
         navigate("/tags");
-        setPage("tag");
         break;
-      default:
-        setPage(newPage);
     }
+
+    setPage(newPage);
+    setCurrentPage(PageFactory.createPage(newPage, {}));
   };
+
   const handleQuestionNavigation = (questionId) => {
     setQuesitonPage("", "Question Details", questionId);
     setPage("answer");
+    setCurrentPage(PageFactory.createPage("answer", { qid: questionId }));
   };
 
   const handleAnswerNavigation = (qid) => {
     handleQuestionNavigation(qid);
-    setPage("answer");
   };
 
   const handleQuestions = () => {
@@ -71,82 +144,37 @@ const Main = ({
     navigateToPage("tag");
   };
 
-  const renderQuestionPage = () => (
-    <QuestionPage
-      title_text={title}
-      order={questionOrder}
-      search={search}
-      setQuestionOrder={setQuestionOrder}
-      clickTag={(tagName) => {
-        setQuesitonPage(`[${tagName}]`, tagName);
-        navigateToPage("home");
-      }}
-      handleAnswer={handleQuestionNavigation}
-      handleNewQuestion={() => navigateToPage("newQuestion")}
-    />
-  );
-
-  const getPageContent = () => {
-    const pageMap = {
-      home: renderQuestionPage,
-      tag: () => (
-        <TagPage
-          clickTag={(tagName) => {
-            setQuesitonPage(`[${tagName}]`, tagName);
-          }}
-          handleNewQuestion={() => navigateToPage("newQuestion")}
-        />
-      ),
-      profile: () => <UserProfile />,
-      answer: () => (
-        <AnswerPage
-          qid={qid}
-          handleNewQuestion={() => navigateToPage("newQuestion")}
-          handleNewAnswer={() => navigateToPage("newAnswer")}
-        />
-      ),
-      newQuestion: () => {
-        console.log("HEY MR");
-        return (
-          <NewQuestion
-            handleQuestions={() => {
-              setPage("home");
-              navigateToPage("home");
-            }}
-          />
-        );
-      },
-      newAnswer: () => (
-        <NewAnswer qid={qid} handleAnswer={handleAnswerNavigation} />
-      ),
-      activityDashboard: () => <ActivityDashboard />,
-    };
-
-    return (pageMap[page] || renderQuestionPage)();
-  };
-
-  const selectedPage =
-    {
-      home: "q",
-      tag: "t",
-      profile: "p",
-      activityDashboard: "a",
-    }[page] || "q";
-
   const handleActivity = async () => {
     await navigate("/activity");
-    await setPage("activityDashboard");
+    setPage("activityDashboard");
+    setCurrentPage(PageFactory.createPage("activityDashboard", {}));
   };
+
+  const pageProps = {
+    title_text: title,
+    order: questionOrder,
+    search,
+    qid,
+    setQuestionOrder,
+    clickTag: (tagName) => {
+      setQuesitonPage(`[${tagName}]`, tagName);
+    },
+    handleAnswer: handleQuestionNavigation,
+    handleNewQuestion: () => navigateToPage("newQuestion"),
+    handleNewAnswer: () => navigateToPage("newAnswer", false),
+    handleQuestions,
+  };
+
   return (
     <div id="main" className="main">
       <SideBarNav
-        selected={selectedPage}
+        selected={currentPage?.getSelected() || "q"}
         handleQuestions={handleQuestions}
         handleTags={handleTags}
         handleActivity={handleActivity}
       />
       <div id="right_main" className="right_main">
-        {getPageContent()}
+        {currentPage?.getContent(pageProps)}
       </div>
     </div>
   );
